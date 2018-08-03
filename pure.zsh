@@ -117,6 +117,11 @@ prompt_pure_preprompt_render() {
 	# Set the path.
 	preprompt_parts+=('%F{blue}%~%f')
 
+	# Show active docker machine
+	if [[ -n $DOCKER_MACHINE_NAME ]]; then
+		preprompt_parts+=('%F{magenta}<${DOCKER_MACHINE_NAME}>%f')
+	fi
+
 	# Add git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
